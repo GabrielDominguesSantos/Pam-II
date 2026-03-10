@@ -1,16 +1,71 @@
-<FlatList
-  data={people}
-  keyExtractor={(item) => item.id.toString()}
-  renderItem={({ item }) => (
-    <View>
-      <Text>{item.firstname} {item.lastname}</Text>
-      <Text>{item.email}</Text>
-    </View>
-  )}
-/>
-//fetch realiza uma requisição GET.  setPeople(data) armazena os dados no estado
+import { View, Text, FlatList, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { useState, useCallback } from 'react'; 
+import { useFocusEffect } from '@react-navigation/native'; 
+import deletePerson from '../services/deleteComponent';
+import { styles } from '../styles/styles';
 
-fetch(`http://localhost:3000/people/${id}`, {
-    method: 'DELETE'
-})
-//DELETE remove um item do JSON Server.  O id na URL indica qual item será removido
+export default function HomeScreen({ navigation }) {
+  const [people, setPeople] = useState([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      const fetchData = () => {
+        fetch('https://inclinational-cleopatra-craunchingly.ngrok-free.dev/people', {
+          headers: { 
+            'ngrok-skip-browser-warning': 'true'
+          }
+        })
+          .then(response => response.json())
+          .then(data => setPeople(data))
+          .catch(error => console.error("Erro ao carregar lista:", error));
+      };
+      fetchData();
+    }, [])
+  );
+
+  const handleDelete = (id) => {
+    deletePerson(id)
+      .then(() => {
+        setPeople(people.filter(person => person.id !== id));
+      })
+      .catch(error => console.error("Erro ao deletar:", error));
+  };
+
+  return (
+    <View style={styles.container}>
+      <Button 
+        title="Criar novo usuário" 
+        onPress={() => navigation.navigate('AddEditScreen')} 
+      />
+
+      <FlatList
+        data={people}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.itemCard}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.name}>{item.firstname} {item.lastname}</Text>
+              <Text style={styles.emailText}>{item.email}</Text>
+            </View>
+            
+            <View style={styles.buttonsContainer}>
+              <TouchableOpacity 
+                onPress={() => navigation.navigate('AddEditScreen', { id: item.id })}
+                style={styles.editBtn}
+              >
+                <Text style={{color: 'blue'}}>Editar</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity 
+                onPress={() => handleDelete(item.id)}
+                style={styles.deleteBtn}
+              >
+                <Text style={{color: 'red'}}>Deletar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+}

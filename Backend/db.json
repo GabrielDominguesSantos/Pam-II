@@ -1,31 +1,17 @@
 {
-    "people": [
-        {
-            "id": 1,
-            "firstname": "João",
-            "lastname": "Silva",
-            "email": "joao@email.com"
-        },
-
-        {
-            "id": 2,
-            "firstname": "Letícia",
-            "lastname": "Carlin",
-            "email": "leticia@email.com"
-        }
-    ],
-    
-    "vehicle": [
-        {
-            "id": 1,
-            "model": "Nivus",
-            "year": 2025
-        },
-
-        {
-            "id": 2,
-            "model": "Up",
-            "year": 2022
-        }
-    ]
+  "people": [
+    {
+      "id": "1",
+      "firstname": "John",
+      "lastname": "Doe",
+      "email": "john.doe@example.com"
+    },
+    {
+      "id": "9e53",
+      "firstname": "Gabriel",
+      "lastname": "Domingues",
+      "email": "gab.domiingues@gmail.com"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

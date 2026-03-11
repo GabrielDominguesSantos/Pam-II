@@ -1,5 +1,6 @@
+import { BASE_URL } from './api';
 export default function editPerson(id, person) {
-    return fetch(`https://inclinational-cleopatra-craunchingly.ngrok-free.dev/people/${id}`, {
+    return fetch(`${BASE_URL}/people/${id}`, {
         method: 'PUT',
         headers: { 
             'Content-Type': 'application/json',

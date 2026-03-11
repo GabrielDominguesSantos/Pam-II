@@ -1,5 +1,6 @@
+import { BASE_URL } from './api';
 export default function deletePerson(id) {
-    return fetch(`https://inclinational-cleopatra-craunchingly.ngrok-free.dev/people/${id}`, {
+    return fetch(`${BASE_URL}/people/${id}`, {
         method: 'DELETE',
         headers: { 
             'Content-Type': 'application/json',

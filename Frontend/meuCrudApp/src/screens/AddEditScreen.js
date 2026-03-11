@@ -66,7 +66,7 @@ export default function AddEditScreen({ route, navigation }) {
       />
       
       <Button 
-        title={personId ? "Atualizar Dados" : "Salvar no Banco"} 
+        title={personId ? "Atualizar Dados" : "Cadastrar novo usuário"} 
         onPress={handleSave} 
       />
     </View>

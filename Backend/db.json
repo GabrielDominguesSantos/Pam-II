@@ -1,16 +1,39 @@
 {
   "people": [
     {
-      "id": "1",
-      "firstname": "John",
-      "lastname": "Doe",
-      "email": "john.doe@example.com"
-    },
-    {
       "id": "9e53",
       "firstname": "Gabriel",
       "lastname": "Domingues",
       "email": "gab.domiingues@gmail.com"
+    },
+    {
+      "id": "10a8",
+      "firstname": "Maria Aparecida",
+      "lastname": "Josué de Lima Matos Goncçalves",
+      "email": "fagsjagdyab@gmail.com"
+    }
+  ],
+  "vehicle": [
+    {
+      "id": "1",
+      "brand": "Volkswagen",
+      "model": "Gol",
+      "year": 2010,
+      "color": "Prata"
+    },
+    {
+      "id": "2",
+      "brand": "Chevrolet",
+      "model": "Onix",
+      "year": 2018,
+      "color": "Preto"
+    },
+    {
+      "id": "3",
+      "brand": "Ford",
+      "model": "Fiesta",
+      "year": 2015,
+      "color": "Vermelho"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

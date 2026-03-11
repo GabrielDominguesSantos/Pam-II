@@ -1,8 +1,9 @@
 import { View, Text, FlatList, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { BASE_URL } from '../services/api';
 import { useState, useCallback } from 'react'; 
 import { useFocusEffect } from '@react-navigation/native'; 
 import deletePerson from '../services/deleteComponent';
-import { styles } from '../styles/styles';
+import { styles } from '../styles/HomeScreen.styles';
 
 export default function HomeScreen({ navigation }) {
   const [people, setPeople] = useState([]);
@@ -10,7 +11,7 @@ export default function HomeScreen({ navigation }) {
   useFocusEffect(
     useCallback(() => {
       const fetchData = () => {
-        fetch('https://inclinational-cleopatra-craunchingly.ngrok-free.dev/people', {
+        fetch(`${BASE_URL}/people`, {
           headers: { 
             'ngrok-skip-browser-warning': 'true'
           }
@@ -54,7 +55,7 @@ export default function HomeScreen({ navigation }) {
                 style={styles.editBtn}
               >
                 <Text style={{color: 'blue'}}>Editar</Text>
-              </TouchableOpacity>
+              </TouchableOpacity>  
 
               <TouchableOpacity 
                 onPress={() => handleDelete(item.id)}

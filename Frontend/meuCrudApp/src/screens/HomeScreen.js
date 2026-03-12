@@ -34,10 +34,12 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Button 
-        title="Criar novo usuário" 
-        onPress={() => navigation.navigate('AddEditScreen')} 
-      />
+      <TouchableOpacity  
+        onPress={() => navigation.navigate('AddEditScreen')}
+        style={styles.editBtn} 
+      >
+        <Text style={{color: 'blue', textAlign: 'center', fontSize: 16}}>Criar Novo Usuário</Text>
+      </TouchableOpacity>
 
       <FlatList
         data={people}

@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     gap: 15 
   },
   editBtn: { 
-    padding: 5 
+    padding: 5
   },
   deleteBtn: { 
     padding: 5 
